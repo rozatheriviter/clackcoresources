@@ -76,6 +76,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function isClackamasResource(resource) {
+        // 1. Check for explicit county field (future proofing)
+        if (resource.county) {
+            const c = resource.county.toLowerCase();
+            return c.includes('clackamas') || c.includes('tri-county') || c.includes('tri county');
+        }
+
+        const content = (
+            (resource.notes || '') + ' ' +
+            (resource.services || '') + ' ' +
+            (resource.name || '') + ' ' +
+            (resource.address || '')
+        ).toLowerCase();
+
+        // Key terms that indicate Clackamas relevance
+        const mentionsClackamas = content.includes('clackamas');
+        const mentionsTriCounty = content.includes('tri-county') || content.includes('tri county');
+
+        // Clackamas County Cities/Locales
+        const cities = [
+            'oregon city', 'milwaukie', 'gladstone', 'happy valley',
+            'estacada', 'sandy', 'canby', 'molalla', 'west linn',
+            'lake oswego', 'wilsonville', 'boring', 'beavercreek',
+            'welches', 'rhododendron', 'government camp', 'tualatin'
+        ];
+        const hasCity = cities.some(city => content.includes(city));
+
+        // Clackamas Zip Codes
+        const zips = [
+            '97045', '97034', '97068', '97015', '97027', '97004',
+            '97009', '97011', '97013', '97017', '97022', '97023',
+            '97028', '97038', '97042', '97049', '97055', '97060',
+            '97062', '97067', '97070', '97086', '97089'
+        ];
+        const hasZip = zips.some(zip => content.includes(zip));
+
+        // Exclusions: If it explicitly says "Washington County" (e.g. "residents of...")
+        // AND doesn't mention Clackamas/Tri-County/Cities, exclude it.
+        // We look for specific exclusionary phrases or context if possible,
+        // but 'washington county' presence is a strong signal in the current dataset
+        // unless counteracted by positive signals.
+        const mentionsWashCo = content.includes('washington county') || content.includes('washco');
+
+        if (mentionsWashCo && !mentionsClackamas && !mentionsTriCounty && !hasCity && !hasZip) {
+            return false;
+        }
+
+        // If it doesn't mention Washington County explicitly as a restriction,
+        // but also doesn't mention Clackamas...
+        // The user said "Based on the resources.js, only display clackamas County resources".
+        // If the list is mixed, we should require a positive signal for Clackamas
+        // OR an absence of a negative signal for other counties?
+        // Given the instructions, we should probably require a positive signal
+        // to be safe, otherwise we show random stuff.
+        // However, some valid resources might just list an address in Oregon City without saying "Clackamas".
+        // 'hasCity' covers that.
+
+        return mentionsClackamas || mentionsTriCounty || hasCity || hasZip;
+    }
+
     function filterResources() {
         return resources.filter(resource => {
             // Category Match
@@ -92,7 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const searchMatch = searchString.includes(searchTerm);
 
-            return categoryMatch && searchMatch;
+            // Clackamas Filter
+            const clackamasMatch = isClackamasResource(resource);
+
+            return categoryMatch && searchMatch && clackamasMatch;
         });
     }
 
