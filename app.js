@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function init() {
-        if (typeof resources === 'undefined') {
+        if (!window.resources) {
             console.error('Resources not loaded');
             return;
         }
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getUniqueCategories() {
-        const categories = new Set(resources.map(r => r.category));
+        const categories = new Set(window.resources.map(r => r.category));
         return Array.from(categories).sort();
     }
 
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterResources() {
-        return resources.filter(resource => {
+        return window.resources.filter(resource => {
             // Category Match
             const categoryMatch = currentCategory === 'all' || resource.category === currentCategory;
 
