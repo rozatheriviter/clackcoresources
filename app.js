@@ -99,9 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
             'oregon city', 'milwaukie', 'gladstone', 'happy valley',
             'estacada', 'sandy', 'canby', 'molalla', 'west linn',
             'lake oswego', 'wilsonville', 'boring', 'beavercreek',
-            'welches', 'rhododendron', 'government camp'
+            'welches', 'rhododendron', 'government camp', 'tualatin'
         ];
         const hasCity = cities.some(city => content.includes(city));
+
+        // Clackamas Zip Codes
+        const zips = [
+            '97045', '97034', '97068', '97015', '97027', '97004',
+            '97009', '97011', '97013', '97017', '97022', '97023',
+            '97028', '97038', '97042', '97049', '97055', '97060',
+            '97062', '97067', '97070', '97086', '97089'
+        ];
+        const hasZip = zips.some(zip => content.includes(zip));
 
         // Exclusions: If it explicitly says "Washington County" (e.g. "residents of...")
         // AND doesn't mention Clackamas/Tri-County/Cities, exclude it.
@@ -110,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // unless counteracted by positive signals.
         const mentionsWashCo = content.includes('washington county') || content.includes('washco');
 
-        if (mentionsWashCo && !mentionsClackamas && !mentionsTriCounty && !hasCity) {
+        if (mentionsWashCo && !mentionsClackamas && !mentionsTriCounty && !hasCity && !hasZip) {
             return false;
         }
 
@@ -124,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // However, some valid resources might just list an address in Oregon City without saying "Clackamas".
         // 'hasCity' covers that.
 
-        return mentionsClackamas || mentionsTriCounty || hasCity;
+        return mentionsClackamas || mentionsTriCounty || hasCity || hasZip;
     }
 
     function filterResources() {
