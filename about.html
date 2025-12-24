@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Rooted: WashCo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2A4434">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        /* Internal styles specific to the text layout of the About page 
+           to ensure readability without modifying the global style.css */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 0 100px;
+        }
+        
+        .content-section {
+            margin-bottom: 48px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-header);
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--accent-secondary);
+            padding-bottom: 12px;
+            display: inline-block;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        /* Adjust hero for page without search bar */
+        .hero-about {
+            padding-bottom: 80px;
+            margin-bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">Rooted: WashCo</h1>
+            <nav>
+                <a href="index.html">Resources</a>
+                <a href="#">Guides</a>
+                <a href="submit-resource.html">Submit Resource</a>
+                <a href="#" class="active">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero hero-about">
+            <div class="container">
+                <h2>Bridging the Gap</h2>
+                <p>Connecting Washington County residents to essential services, dignity, and community support.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="content-wrapper">
+                
+                
+                <div class="content-section">
+                    <h3>The Mission</h3>
+                    <p>
+                        <strong>Rooted: WashCo</strong> was born out of a critical necessity. With the shifting landscape of local aid—specifically the discontinuation of online resource listings by Street Roots—a digital void emerged for those seeking support outside of Portland’s city limits.
+                    </p>
+                    <p>
+                        While Multnomah County has a robust digital infrastructure for social services, Washington County faces parallel crises regarding housing, food security, and economic instability, yet often lacks a centralized, accessible digital hub. This disparity can make the difference between finding help and falling through the cracks.
+                    </p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Who We Are</h3>
+                    <p>
+                        This guide is a volunteer-led initiative created by a local transgender community worker. Having witnessed firsthand the difficulty of navigating scattered information, this project aims to condense vital data into a single, searchable, and dignified platform.
+                    </p>
+                    <p>
+                        We believe that access to information is a fundamental right. Whether you are looking for a hot meal, a safe place to sleep, or healthcare services, you deserve to find that information quickly, without barriers, and without judgment.
+                    </p>
+                </div>
+
+                <div class="action-row" style="justify-content: center; margin-top: 60px;">
+                    <a href="index.html" class="btn btn-primary" style="padding: 16px 48px;">Browse Resources</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rooted: WashCo. A Volunteer Run Resource Guide</p>
+        </div>
+    </footer>
+</body>
+</html>

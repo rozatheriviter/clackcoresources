@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Resource - Rooted: WashCo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2A4434">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">Rooted: WashCo</h1>
+            <nav>
+                <a href="index.html">Resources</a>
+                <a href="#">Guides</a>
+                <a href="submit-resource.html" class="active">Submit Resource</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" style="padding-bottom: 80px; margin-bottom: 40px;">
+            <div class="container">
+                <h2>Submit a Resource</h2>
+                <p>Help us grow our directory by submitting a new resource.</p>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <div class="container" style="max-width: 800px;">
+                <form id="resourceForm" class="resource-form">
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Day Services/Hygiene">Day Services/Hygiene</option>
+                            <option value="Disability and Aging Support">Disability and Aging Support</option>
+                            <option value="Domestic Violence/Sexual Assault">Domestic Violence/Sexual Assault</option>
+                            <option value="Family and Parenting Support">Family and Parenting Support</option>
+                            <option value="Food and Grocery Assistance">Food and Grocery Assistance</option>
+                            <option value="Health Care">Health Care</option>
+                            <option value="Housing and Rental Assistance">Housing and Rental Assistance</option>
+                            <option value="Legal Services">Legal Services</option>
+                            <option value="Libraries">Libraries</option>
+                            <option value="Meals">Meals</option>
+                            <option value="Mental Health and Recovery Services">Mental Health and Recovery Services</option>
+                            <option value="Shelter">Shelter</option>
+                            <option value="Syringe Exchange/Harm Reduction">Syringe Exchange/Harm Reduction</option>
+                            <option value="Veteran Services">Veteran Services</option>
+                            <option value="Youth Services">Youth Services</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Organization Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="e.g. 123 Main St, City, OR 97000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" placeholder="e.g. 503-555-0123">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hours">Hours</label>
+                        <input type="text" id="hours" name="hours" placeholder="e.g. Mon-Fri 9am-5pm">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="services">Services *</label>
+                        <textarea id="services" name="services" rows="4" required placeholder="Describe the services provided..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any additional requirements, eligibility, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transportation">Transportation</label>
+                        <input type="text" id="transportation" name="transportation" placeholder="e.g. Bus: 57, MAX: Blue">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Submit via Email</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rooted: WashCo. A Volunteer Run Resource Guide</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('resourceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const category = document.getElementById('category').value;
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const hours = document.getElementById('hours').value;
+            const services = document.getElementById('services').value;
+            const notes = document.getElementById('notes').value;
+            const transportation = document.getElementById('transportation').value;
+
+            const subject = encodeURIComponent(`New Resource Submission: ${name}`);
+            const body = encodeURIComponent(
+                `Category: ${category}\n` +
+                `Name: ${name}\n` +
+                `Address: ${address}\n` +
+                `Phone: ${phone}\n` +
+                `Hours: ${hours}\n` +
+                `Services: ${services}\n` +
+                `Notes: ${notes}\n` +
+                `Transportation: ${transportation}`
+            );
+
+            window.location.href = `mailto:rozatheriviter@gmail.com?subject=${subject}&body=${body}`;
+        });
+    </script>
+</body>
+</html>

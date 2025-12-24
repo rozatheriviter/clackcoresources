@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooted: WashCo Resource Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2A4434">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">Rooted: WashCo</h1>
+            <nav>
+                <!-- Placeholder for future links -->
+                <a href="index.html" class="active">Resources</a>
+                <a href="#">Guides</a>
+                <a href="submit-resource.html">Submit Resource</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="container">
+                <h2>Essential Resource Guide for Washington County.</h2>
+                <p>Find clothing, food, shelter, and support services near you.</p>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search for organizations, services, or needs..." aria-label="Search resources">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <div class="categories" id="categoryContainer">
+                    <button class="category-chip active" data-category="all">All</button>
+                    <!-- Categories will be injected here via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section class="results">
+            <div class="container">
+                <div id="resourceGrid" class="resource-grid">
+                    <!-- Resources will be injected here via JS -->
+                </div>
+                <div id="noResults" class="no-results hidden">
+                    <p>No resources found matching your search.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rooted: WashCo. A Volunteer Run Resource Guide</p>
+        </div>
+    </footer>
+
+    <script src="resources.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
