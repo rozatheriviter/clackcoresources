@@ -1,4 +1,4 @@
-const resources = [
+window.resources = [
   // Clothing
   {
     category: "Clothing",

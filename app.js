@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function init() {
+        if (typeof resources === 'undefined') {
+            console.error('Resources not loaded');
+            return;
+        }
         renderCategories();
         renderResources();
         setupEventListeners();
